@@ -1,0 +1,9 @@
+.thumbnail {
+  width: 220px;
+  height: 280px;
+}
+
+.book-item {
+  width: 200px;
+  justify-self: center;
+}
