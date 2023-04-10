@@ -1,3 +1,13 @@
 a {
   text-decoration: none;
 }
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 32px;
+}

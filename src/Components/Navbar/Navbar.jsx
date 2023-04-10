@@ -16,16 +16,22 @@ const Navbar = () => {
 
   return (
     <nav className="nav-bar">
-      <p>BooksVille {pageDesc}</p>
-      <p>
-        <Link to={"/"}>Home</Link>
-      </p>
-      <p>
-        <Link to={"/myorders"}>Myorders</Link>
-      </p>
-      <p>
-        <Link to={"/cart"}>Cart</Link>
-      </p>
+      <div className="logo">BooksVille {pageDesc}</div>
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">
+        &#9776;
+      </label>
+      <div className="menu">
+        <li>
+          <Link to={"/"}>Home</Link>
+        </li>
+        <li>
+          <Link to={"/myorders"}>Myorders</Link>
+        </li>
+        <li>
+          <Link to={"/cart"}>Cart</Link>
+        </li>
+      </div>
     </nav>
   );
 };

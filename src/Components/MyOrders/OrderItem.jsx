@@ -1,5 +1,5 @@
 import React from "react";
-import './MyOrders.css'
+import "./MyOrders.css";
 const OrderItem = ({ order }) => {
   let orderDate = new Date(Number(order["OrderPlaced"]));
   orderDate = orderDate.toLocaleDateString();

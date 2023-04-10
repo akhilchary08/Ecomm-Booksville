@@ -4,9 +4,10 @@ import OrderItem from "./OrderItem";
 
 const MyOrders = () => {
   let [orderData, setOrderData] = useState([]);
-  //   let [bookData, setBookData] = useState([]);
+
   useEffect(() => {
     let idString = "";
+
     async function fetchOrders() {
       let orders = await axios.get("http://localhost:3000/orders");
       let bookIds = orders.data.map((item) => item.BookId);
@@ -14,14 +15,11 @@ const MyOrders = () => {
         idString += `id=${bookIds[i]}&`;
       }
       idString = idString.substring(0, idString.length - 1);
-      //   console.log(idString);
       let books = await axios.get(`http://localhost:3000/Books?${idString}`);
       orders = orders.data;
       books = books.data;
-      console.log(books, orders);
       let ordersArray = [];
       for (let i = 0; i < books.length; i++) {
-        console.log(books[i]["price"]);
         ordersArray.push({
           id: books[i]["id"],
           BookTitle: books[i]["BookTitle"],
@@ -34,9 +32,9 @@ const MyOrders = () => {
       }
       setOrderData(ordersArray);
     }
-    fetchOrders();
 
-  }, []); //, bookData orderData
+    fetchOrders();
+  }, []);
 
   return (
     <div className="my-orders">
