@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import "./Navbar.css";
@@ -13,15 +13,33 @@ const Navbar = () => {
     let title = location.pathname.split("/")[2].split("-").join(" ");
     pageDesc = `| ${title}`;
   }
+  const [active, setActive] = useState(true);
 
+  const setState = () => {
+    setActive(!active);
+  };
   return (
     <nav className="nav-bar">
-      <div className="logo">BooksVille {pageDesc}</div>
-      <input type="checkbox" id="checkbox_toggle" />
-      <label for="checkbox_toggle" class="hamburger">
-        &#9776;
-      </label>
-      <div className="menu">
+      <div className="logo">
+        <p>BooksVille <span className="page-info">{pageDesc}</span> </p>
+        <div className="hamburger-cross">
+          <span
+            className="cross"
+            onClick={setState}
+            style={{ display: active ? "none" : "block" }}
+          >
+            &#x58;
+          </span>
+          <span
+            className="hamburger"
+            onClick={setState}
+            style={{ display: !active ? "none" : "block" }}
+          >
+            &#9776;
+          </span>
+        </div>
+      </div>
+      <ul className="menu" style={{ display: !active ? "block" : "none" }}>
         <li>
           <Link to={"/"}>Home</Link>
         </li>
@@ -31,7 +49,7 @@ const Navbar = () => {
         <li>
           <Link to={"/cart"}>Cart</Link>
         </li>
-      </div>
+      </ul>
     </nav>
   );
 };

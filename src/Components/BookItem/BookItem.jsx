@@ -1,11 +1,11 @@
 import React from "react";
-import "./BookItem.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../features/cartSlice";
+import "./BookItem.css";
 
 const trimBookTitle = (title) => {
-  return title.length > 24 ? title.substring(0, 24) + "..." : title;
+  return title.length > 20 ? title.substring(0, 20) + "..." : title;
 };
 const Pathtitle = (title) => {
   title = title.replace(/[^a-zA-Z]+/gi, "-");
@@ -26,9 +26,9 @@ const BookItem = ({ BookData }) => {
             className="thumbnail"
           />
         </Link>
-        <p>{trimBookTitle(BookData.BookTitle)}</p>
-        <p>₹{BookData.price}</p>
-        <button
+        <p className="book-title">{trimBookTitle(BookData.BookTitle)}</p>
+        <p className="book-price">₹{BookData.price}</p>
+        <button className="buynow-btn"
           onClick={() => {
             dispatch(addToCart(BookData));
             navigate("/cart");

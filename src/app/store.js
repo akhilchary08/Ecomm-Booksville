@@ -12,6 +12,7 @@ import {
 } from "redux-persist";
 
 import cartReducer from "../features/cartSlice";
+import addressreducer from "../features/addressSlice";
 
 const persistConfig = {
   key: "persistCart",
@@ -20,6 +21,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   cart: cartReducer,
+  address:addressreducer
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

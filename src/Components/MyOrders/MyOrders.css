@@ -2,27 +2,29 @@
   width: 100px;
   height: 150px;
 }
-.ordered-date{
-    justify-self: left;
+.ordered-date {
+  justify-self: left;
 }
 .order-item {
   border: 1px solid #000;
   width: 90%;
   margin-bottom: 20px;
   margin-left: 5%;
+  margin-top: 20px;
 }
 .date-status {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 20px;
 }
-
 .book-info {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   padding: 20px;
+  grid-template-columns: 1fr 1fr;
 }
-
 .book-image {
   justify-self: left;
+}
+@media screen and (min-width: 600px) {
+  
 }

@@ -10,7 +10,15 @@ const MyOrders = () => {
 
     async function fetchOrders() {
       let orders = await axios.get("http://localhost:3000/orders");
-      let bookIds = orders.data.map((item) => item.BookId);
+      let bookIdsMap = new Map();
+      let bookIds = orders.data.map((item) => {
+        if (bookIdsMap.has(item.BookId)) {
+          bookIdsMap.get(item.BookId).push({id:item.id,OrderPlaced:item.OrderPlaced});
+        } else {
+          bookIdsMap.set(item.BookId, [{id:item.id,OrderPlaced:item.OrderPlaced}]);
+        }
+        return item.BookId;
+      });
       for (let i = 0; i < bookIds.length; i++) {
         idString += `id=${bookIds[i]}&`;
       }
@@ -20,16 +28,20 @@ const MyOrders = () => {
       books = books.data;
       let ordersArray = [];
       for (let i = 0; i < books.length; i++) {
-        ordersArray.push({
-          id: books[i]["id"],
-          BookTitle: books[i]["BookTitle"],
-          author: books[i]["author"],
-          price: books[i]["price"],
-          image: books[i]["image"],
-          status: orders[i]["status"],
-          OrderPlaced: orders[i]["OrderPlaced"],
-        });
+        let cnt = bookIdsMap.get(books[i]["id"]).length;
+        while (cnt-- > 0) {
+          ordersArray.push({
+            id: bookIdsMap.get(books[i]["id"])[cnt].id,
+            BookTitle: books[i]["BookTitle"],
+            author: books[i]["author"],
+            price: books[i]["price"],
+            image: books[i]["image"],
+            status: orders[i]["status"],
+            OrderPlaced: bookIdsMap.get(books[i]["id"])[cnt].OrderPlaced,
+          });
+        }
       }
+      ordersArray.sort((a, b) => b.OrderPlaced - a.OrderPlaced);
       setOrderData(ordersArray);
     }
 
@@ -46,23 +58,3 @@ const MyOrders = () => {
 };
 
 export default MyOrders;
-
-// let books = await axios.get(`http://localhost:3000/Books?${idString}`);
-//       orders=orders.data;
-//       books = books.data;
-//       console.log(books,orders);
-//       for (let i = 0; i < books.length; i++) {
-//         setOrderData([
-//           ...orderData,
-//           {
-//             id: books.id,
-//             BookTitle: books["BookTitle"],
-//             author: books["author"],
-//             price: books["price"],
-//             image: books["image"],
-//             status: orders["status"],
-//             OrderPlaced: orders["OrderPlaced"],
-//           },
-//         ]);
-//       }
-//       console.log(orderData)

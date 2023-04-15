@@ -1,9 +1,70 @@
 .thumbnail {
-  width: 220px;
-  height: 280px;
+  max-width: 100%;
+  max-height: 60%;
 }
 
 .book-item {
-  width: 200px;
+  width: 100%;
+  height: 180px;
   justify-self: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(167, 163, 163);
+}
+
+.book-item p {
+  margin-bottom: 5px;
+}
+
+.book-title {
+  font-size: 12px;
+}
+
+.book-price {
+  font-size: 12px;
+}
+
+.buynow-btn {
+  border: 0px;
+  font-size: 12px;
+  padding: 5px 20px;
+  background-color: #ffabab;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-item:nth-child(odd) {
+  border-right: 1px solid rgb(167, 163, 163);
+}
+
+/* for tablet styles */
+@media screen and (min-width: 620px) {
+  .book-item {
+    height: 300px;
+    width: 100%;
+  }
+  .thumbnail {
+    height: 60%;
+    max-width: 100%;
+  }
+  .book-title {
+    font-size: 15px;
+  }
+  .book-price {
+    font-size: 15px;
+  }
+  .buynow-btn {
+    font-size: 13px;
+    padding: 10px 25px;
+  }
+  .book-item:nth-child(even) {
+    border-right: 1px solid rgb(167, 163, 163);
+  }
+}
+
+
+/* laptop styles */
+
+@media screen and (min-width:920px){
+  
 }

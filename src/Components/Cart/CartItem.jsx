@@ -6,10 +6,10 @@ const CartItem = ({ cartData }) => {
   return (
     <>
       <div className="cart-item">
-        <p>{cartData.BookTitle}</p>
-        <p>₹{cartData.price}</p>
+        <p className="cart-item__title">{cartData.BookTitle}</p>
+        <p> Price - ₹{cartData.price}</p>
         <button onClick={() => dispatch(removeBook(cartData.id))}>
-          remove from cart
+          Remove From Cart
         </button>
       </div>
     </>

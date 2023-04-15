@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookItem from "../BookItem/BookItem";
-
 import "./HomePage.css";
+
 const HomePage = () => {
   let [data, setData] = useState([]);
 
@@ -17,14 +17,23 @@ const HomePage = () => {
         console.log(err);
       });
   }, []);
-
   return (
     <>
-      <div className="book-main">
-        {data.map((item) => (
-          <BookItem key={item.id} BookData={item} />
-        ))}
-      </div>
+      {data.length === 0 ? (
+        <img
+          src="/Spinner-1s-200px.gif"
+          className="spinner-loader"
+          alt=""
+        />
+      ) : (
+        <div className="book-main">
+          {data.map((item) => (
+            <BookItem key={item.id} BookData={item} />
+          ))}
+        </div>
+      )}
+
+
     </>
   );
 };
