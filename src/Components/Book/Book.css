@@ -40,10 +40,16 @@
   color: #fff;
 }
 
-.remove-from-cart{
-    background-color: #ff6d6d; 
+.remove-from-cart {
+  background-color: #ff6d6d;
 }
 
+.desc.book-text {
+  text-align: left;
+  border: 0.5px solid black;
+  margin: 20px 5px;
+  padding: 10px;
+}
 .addToCart-BuyNow {
   display: flex;
   justify-content: space-evenly;
