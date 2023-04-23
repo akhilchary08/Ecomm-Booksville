@@ -20,11 +20,7 @@ const HomePage = () => {
   return (
     <>
       {data.length === 0 ? (
-        <img
-          src="/Spinner-1s-200px.gif"
-          className="spinner-loader"
-          alt=""
-        />
+        <img src="/Spinner-1s-200px.gif" className="spinner-loader" alt="" />
       ) : (
         <div className="book-main">
           {data.map((item) => (
@@ -32,8 +28,6 @@ const HomePage = () => {
           ))}
         </div>
       )}
-
-
     </>
   );
 };

@@ -13,9 +13,13 @@ const MyOrders = () => {
       let bookIdsMap = new Map();
       let bookIds = orders.data.map((item) => {
         if (bookIdsMap.has(item.BookId)) {
-          bookIdsMap.get(item.BookId).push({id:item.id,OrderPlaced:item.OrderPlaced});
+          bookIdsMap
+            .get(item.BookId)
+            .push({ id: item.id, OrderPlaced: item.OrderPlaced });
         } else {
-          bookIdsMap.set(item.BookId, [{id:item.id,OrderPlaced:item.OrderPlaced}]);
+          bookIdsMap.set(item.BookId, [
+            { id: item.id, OrderPlaced: item.OrderPlaced },
+          ]);
         }
         return item.BookId;
       });
